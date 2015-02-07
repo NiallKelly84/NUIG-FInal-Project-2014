@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jstl/core">
+<!-- Form to generate welcome page for user -->
+<h:head>
+<title>Welcome</title>
+</h:head>
+<h:body>
+<h:outputStylesheet library="css" name="style.css"  />
+<div class="box"><h:button id="search" class="myButton3" outcome="search"
+						value="Search"/></div>
+<div class="box"><h:button id="register" class="myButton3" outcome="register"
+						value="Register"/></div>
+<div class="box"><h:button id="logout2" class="myButton3" action="#{loginBean.logout}" outcome="login"
+						value="Logout"/></div>
+<div class="centre"><h:graphicImage value="resources/images/logoImage.gif" width="200" height="170" /></div>
+<div class="welcome"><h:form id="projectForm">
+		<div class="white"><H2>Company Profile</H2></div>
+		<table>
+			<tr>
+			<!-- Display account details for logged in user  -->
+				<!--<td><div class="companydetails"><h:outputText value="#{registerBean.welcomeDisplay()}" escape="false"/></div>-->
+				<td><div class="companydetails"><h:outputText value="#{registerBean.userList.get(0).businessName}" class="companyname" escape="false"/><br/><br/>
+				<h:outputText value="#{registerBean.userList.get(0).address1}" escape="false"/><br/>
+				<h:outputText value="#{registerBean.userList.get(0).address2}" escape="false"/><br/>
+				<h:outputText value="#{registerBean.userList.get(0).town}" escape="false"/><br/>
+				<h:outputText value="Co. " escape="false"/>
+				<h:outputText value="#{registerBean.userList.get(0).county.name}" escape="false"/><br/><br/>
+				<h:outputText value="Phone: " class="boldfont" escape="false"/>
+				<h:outputText value="#{registerBean.userList.get(0).telephoneNum}" escape="false"/><br/>
+				<h:outputText value="Email: " class="boldfont" escape="false"/>
+				<h:outputText value="#{registerBean.userList.get(0).email}" escape="false"/><br/>
+				</div>
+				</td>
+			</tr>
+			<tr>
+				<td><div class="white"><H2>Company Description</H2></div>
+				<div class="companydetails"><h:outputText value="#{registerBean.userList.get(0).description}" escape="false"/></div>
+				</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><h:commandButton id="Change" class="myButton2" value="   Change    " action="#{registerBean.navigateToDescription()}">
+					</h:commandButton></td>
+				
+			</tr>
+			<tr>
+			<td><div class="white"><H2>Work Locations</H2></div>
+				<!-- Create list of Work locations for user -->
+				<div class="tables"><h:dataTable value="#{locationsBean.locationsList}" var="l" border="1">
+
+					<div class="td"><h:column>
+					<div class="th"><f:facet name="header">
+					<div class="generaltext3">County</div>
+					</f:facet></div>
+					<div class="generaltext2">#{l.countyName}</div>
+					</h:column></div>
+					<div class="td"><h:column>
+					<div class="th"><f:facet name="header">
+					<div class="generaltext3">Action</div>
+					</f:facet></div>
+					<div class="centrebutton"><h:commandButton id="delete" class="myButton2" value="delete" action="#{locationsBean.deleteLocation(l.location_id)}">
+					</h:commandButton></div>
+	              </h:column></div>
+				</h:dataTable></div>
+				
+				</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><h:commandButton id="Add" class="myButton2" value="Add Locations" action="#{registerBean.navigateToLocations()}">
+					</h:commandButton></td>
+				
+			</tr>
+				<td><div class="white"><H2>Past Projects</H2></div>
+				<!-- Create List of projects for user -->
+				<div class="tables2"><h:dataTable value="#{projectBean.projectList}" var="p" border="1">
+
+					<div class="td3"><h:column>
+					<div class="th3"><f:facet name="header">
+					<div class="generaltext3">Project Name</div>
+					</f:facet></div>
+					<div class="generaltext2">#{p.projectName}</div>
+					</h:column></div>
+					<div class="td2"><h:column>
+					<f:facet name="header">
+					<div class="generaltext3">Action</div>
+					</f:facet>
+					<div class="centrebutton2"><h:commandButton id="view" class="myButton2" value="view" action="#{projectBean.displayProjectDetails()}">
+							<!-- Pass these parameters to the managed bean so that data can be accessed from another JSF page -->
+							<f:param name="projId" value="#{p.project_id}" />
+							<f:param name="projName" value="#{p.projectName}" />
+							<f:param name="projDescription" value="#{p.projectDescription}" />
+					</h:commandButton></div>
+	              </h:column></div>
+	              <div class="td2"><h:column>
+					<f:facet name="header">
+					<div class="generaltext3">Action</div>
+					</f:facet>
+	              <div class="centrebutton2"><h:commandButton id="delete" class="myButton2" value="Delete" action="#{projectBean.deleteProject(p.project_id)}">
+				
+				</h:commandButton></div>
+				</h:column></div>
+				</h:dataTable></div>
+				
+				</td>
+			<tr>
+				<td></td>
+				<td><h:commandButton id="AddProject" class="myButton2" value=" Add Project " action="#{registerBean.navigateToProjects()}">
+					</h:commandButton></td>
+				
+			</tr>
+			<tr>
+		<td><h:commandButton id="logout" class="myButton2" action="#{loginBean.logout}" value="Logout">
+			
+		</h:commandButton></td>
+		</tr>
+		</table>
+	</h:form></div>
+	</h:body>
+	</html>

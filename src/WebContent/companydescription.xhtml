@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+	<!-- Form for Company Description -->
+<h:head>
+<title>Company Description</title>
+</h:head>
+<body>
+<h:outputStylesheet library="css" name="style.css"  />
+<div class="box"><h:button id="search" class="myButton3" outcome="search"
+						value="Search"/></div>
+<div class="box"><h:button id="register" class="myButton3" outcome="register"
+						value="Register"/></div>
+<div class="box"><h:button id="logout1" class="myButton3" outcome="login"
+						value="Logout"/></div>
+<div class="centre"><h:graphicImage value="resources/images/logoImage.gif" width="200" height="170" /></div>
+	<div class="welcome"><h:form id="greetingForm">
+		<div class="white"><H2>Current Company Description</H2></div>
+		<table>
+			<tr>
+			<td><div class="companydetails"><h:outputText value="#{registerBean.welcomeDisplay().get(0).description}" escape="false"/></div></td>
+						</tr>
+			<tr>
+			<td><div class="white"><H2>New Company Description</H2></div>
+			<h:inputTextarea rows="15" cols="55" id="companyDescription"  class="inputbox" value="#{registerBean.businessAccount.description}"
+						size="20" /></td>
+						</tr>
+						<tr>
+				<td></td>
+				<td><h:commandButton id="update"
+						action="#{registerBean.update}" class="myButton2" value="Update">
+					</h:commandButton></td>
+			</tr>
+						<tr>
+		<td><div class="myButtonPadding"><h:commandButton id="logout" action="#{loginBean.logout}" value="logout" class="myButton">
+		</h:commandButton></div></td>
+		</tr>
+		</table>
+	</h:form></div>
+</body>
+</html>

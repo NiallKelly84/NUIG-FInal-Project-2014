@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#register.xhtml" PATH="/register.xhtml"
+  SHAPE="408,48,50,41" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#register.xhtml:0" NAME="item"
+   PATH="/register.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="success::#login.xhtml" NAME="output"
+    PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="success" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="register::#register.xhtml" NAME="output1"
+    PATH="/register.xhtml" TARGET="rules:#register.xhtml"
+    TITLE="register" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#welcome.xhtml" PATH="/welcome.xhtml"
+  SHAPE="272,120,50,41" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#welcome.xhtml:0" NAME="item"
+   PATH="/welcome.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="logout::#login.xhtml" NAME="output2"
+    PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="logout" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="success::#projectDescription.xhtml"
+    NAME="output" PATH="/projectDescription.xhtml"
+    TARGET="rules:#projectDescription.xhtml" TITLE="success" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="delete::#welcome.xhtml" NAME="output1"
+    PATH="/welcome.xhtml" TARGET="rules:#welcome.xhtml" TITLE="delete" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="description::#companydescription.xhtml"
+    NAME="output3" PATH="/companydescription.xhtml"
+    TARGET="rules:#companydescription.xhtml" TITLE="description" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="locations::#locations.xhtml" NAME="output4"
+    PATH="/locations.xhtml" TARGET="rules:#locations.xhtml"
+    TITLE="locations" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="projects::#projects.xhtml" NAME="output5"
+    PATH="/projects.xhtml" TARGET="rules:#projects.xhtml"
+    TITLE="projects" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#login.xhtml" PATH="/login.xhtml"
+  SHAPE="520,160,50,73" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#login.xhtml:0" NAME="item"
+   PATH="/login.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="success::#welcome.xhtml" NAME="output"
+    PATH="/welcome.xhtml" TARGET="rules:#welcome.xhtml" TITLE="success" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="failure::#login.xhtml" NAME="output1"
+    PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="failure" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="systemError::#login.xhtml" NAME="output2"
+    PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="systemError" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#companydescription.xhtml"
+  PATH="/companydescription.xhtml" SHAPE="32,129,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#companydescription.xhtml:0" NAME="item"
+   PATH="/companydescription.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="success::#welcome.xhtml" NAME="output"
+    PATH="/welcome.xhtml" TARGET="rules:#welcome.xhtml" TITLE="success" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="failure::#companydescription.xhtml"
+    NAME="output1" PATH="/companydescription.xhtml"
+    TARGET="rules:#companydescription.xhtml" TITLE="failure" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#projects.xhtml" PATH="/projects.xhtml"
+  SHAPE="32,305,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#projects.xhtml:0" NAME="item"
+   PATH="/projects.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="success::#welcome.xhtml" NAME="output"
+    PATH="/welcome.xhtml" TARGET="rules:#welcome.xhtml" TITLE="success" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#locations.xhtml" PATH="/locations.xhtml"
+  SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#locations.xhtml:0" NAME="item"
+   PATH="/locations.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="success::#welcome.xhtml" NAME="output"
+    PATH="/welcome.xhtml" TARGET="rules:#welcome.xhtml" TITLE="success" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#search.xhtml" PATH="/search.xhtml"
+  SHAPE="840,192,50,41" model-entity="JSFProcessGroup" persistent="true">
+  <PROCESS-ITEM ID="rules:#search.xhtml:0" NAME="item"
+   PATH="/search.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="success::#viewsearchresult.xhtml"
+    NAME="output" PATH="/viewsearchresult.xhtml"
+    TARGET="rules:#viewsearchresult.xhtml" TITLE="success" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#viewsearchresult.xhtml"
+  PATH="/viewsearchresult.xhtml" SHAPE="890,330,0,0"
+  model-entity="JSFProcessGroup" persistent="true">
+  <PROCESS-ITEM ID="rules:#viewsearchresult.xhtml:0" NAME="item"
+   PATH="/viewsearchresult.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="success::#projectDescription.xhtml"
+    NAME="output" PATH="/projectDescription.xhtml"
+    TARGET="rules:#projectDescription.xhtml" TITLE="success" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#adminlogin.xhtml" PATH="/adminlogin.xhtml"
+  SHAPE="320,529,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#adminlogin.xhtml:0" NAME="item"
+   PATH="/adminlogin.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="success::#adminwelcome.xhtml" NAME="output"
+    PATH="/adminwelcome.xhtml" TARGET="rules:#adminwelcome.xhtml"
+    TITLE="success" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="failure::#adminlogin.xhtml" NAME="output1"
+    PATH="/adminlogin.xhtml" TARGET="rules:#adminlogin.xhtml"
+    TITLE="failure" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="systemError::#adminlogin.xhtml"
+    NAME="output2" PATH="/adminlogin.xhtml"
+    TARGET="rules:#adminlogin.xhtml" TITLE="systemError" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#projectDescription.xhtml"
+  PATH="/projectDescription.xhtml" SHAPE="592,401,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#adminwelcome.xhtml"
+  PATH="/adminwelcome.xhtml" SHAPE="140,441,0,0"
+  model-entity="JSFProcessGroup" persistent="true">
+  <PROCESS-ITEM ID="rules:#adminwelcome.xhtml:0" NAME="item"
+   PATH="/adminwelcome.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="delete::#adminwelcome.xhtml" NAME="output"
+    PATH="/adminwelcome.xhtml" TARGET="rules:#adminwelcome.xhtml"
+    TITLE="delete" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+</PROCESS>

@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<!-- Form to search for contractors -->
+<h:head>
+<title>Search</title>
+</h:head>
+<h:body>
+<h:outputStylesheet library="css" name="style.css"  />
+<div class="box"><h:button id="search" class="myButton3" outcome="search"
+						value="Search"/></div>
+<div class="box"><h:button id="register" class="myButton3" outcome="register"
+						value="Register"/></div>
+<div class="box"><h:button id="login" class="myButton3" outcome="login"
+						value="Login"/></div>
+<div class="centre"><h:graphicImage value="resources/images/logoImage.gif" width="200" height="170" /></div>
+	<div class="search"><h:form id="searchForm">
+		<div class="white"><H2>Search Contractors</H2></div>
+		<div class="generaltext"><H4>Please select the county that you live in
+		</H4></div>
+		
+		<table>
+
+			<tr>
+				
+				<td><h:selectOneMenu id="county" class="dropdownlist"
+						value="#{searchBean.countyId}">
+						<f:selectItems value="#{registerBean.counties}" var="county"
+							itemLabel="#{county.name}" itemValue="#{county.id}" />
+					</h:selectOneMenu></td>
+			</tr>
+			<tr>
+				<td><div class="myButtonPadding"><h:commandButton id="searchContractors" class="myButton"
+				action="#{searchBean.searchContractors(searchBean.countyId)}" value="Search">
+						
+						<!-- results list generated using ajax -->
+						 <f:ajax execute="@form" render=":results" />
+					</h:commandButton></div></td>
+			</tr>
+		</table>
+	</h:form></div>
+	
+	<div class="search2"><h:form id="results">
+		<table>
+			<tr>
+			<td><div class="red"><H2>Search Results</H2></div>
+					
+					<ui:repeat var="s" value="#{searchBean.contractorList}" varStatus="status">
+	    			
+	   			  <tr>
+		    			<td><div class="generaltext5">#{s.businessName}</div></td>
+		    		  
+		    			<td><h:commandButton id="view" class="myButton2" value="view" action="#{searchBean.displayCompanyName()}">
+		    			<!-- parameters passed to managed bean so that they can be accessed from another JSF page -->
+		    			<f:param name="compId" value="#{s.id}" />
+		    			<f:param name="compName" value="#{s.businessName}" />
+		    			<f:param name="compAddress1" value="#{s.address1}" />
+		    			<f:param name="compAddress2" value="#{s.address2}" />
+		    			<f:param name="compTown" value="#{s.town}" />
+		    			<f:param name="compCounty" value="#{s.county.name}" />
+		    			<f:param name="compPhone" value="#{s.telephoneNum}" />
+		    			<f:param name="compEmail" value="#{s.email}" />
+		    			<f:param name="compDescription" value="#{s.description}" />
+	
+		    		<f:setPropertyActionListener target="#{searchBean.projectList}" value="#{s.projects}" />
+					</h:commandButton></td>
+		    			
+		    		  </tr>
+		    		  
+				</ui:repeat>
+				</td>
+			</tr>
+
+	
+		</table>
+	</h:form></div>
+</h:body>
+</html>
+
+
+
+

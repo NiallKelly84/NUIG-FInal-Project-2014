@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+  
+<!-- User Login Form -->   
+<h:head>
+<title>Login Page</title>
+</h:head>
+<h:body>
+<h:outputStylesheet library="css" name="style.css"  />
+<div class="box"><h:button id="adminlogin" class="myButton3" outcome="adminlogin"
+						value="Admin Login"/></div>
+<div class="box"><h:button id="search" class="myButton3" outcome="search"
+						value="Search"/></div>
+<div class="box"><h:button id="register" class="myButton3" outcome="register"
+						value="Register"/></div>
+<div class="box"><h:button id="login" class="myButton3" outcome="login"
+						value="Login"/></div>
+<div class="centre"><h:graphicImage value="resources/images/logoImage.gif" width="200" height="170" /></div>
+	<div class="login"><h:form id="LoginForm">
+		<div class="white"><h2>Login</h2></div>
+		<h:messages errorClass="errorMessage" infoClass="infoMessage"
+			warnClass="warnMessage"></h:messages>
+		<table>
+			<tr>
+				<td><h:outputLabel for="email">
+						<h:outputText class="generaltext" id="emailLabel" value="Email"/>
+					</h:outputLabel></td>
+				<td>
+				<!-- Validation used to verify user input -->
+				<div class="inputboxpadding"><h:inputText class="inputboxes" id="email" value="#{loginBean.email}"
+						size="20" required="true" requiredMessage="Required field" validatorMessage="Invalid Email Address">
+						<f:validator validatorId="com.needABuilder.services.EmailValidator"/>
+						<f:ajax event="blur" render="emailmessage" />
+                  </h:inputText></div></td>
+                 <td><div class="validationbox3"><h:message id="emailmessage" for="email" class="validation"/></div></td>
+			</tr>
+			
+			
+			<tr>
+				<td><h:outputLabel for="password">
+						<h:outputText class="generaltext" id="passwordLabel" value="Password" />
+					</h:outputLabel></td>
+				<td><div class="inputboxpadding"><h:inputSecret id="password" class="inputboxes" value="#{loginBean.password}"
+						size="20" required="true" requiredMessage="Required field" validatorMessage="Password must contain between 8 and 15 characters">
+						<f:validateLength minimum="8" maximum="15"/>
+						<f:ajax event="blur" render="passwordmsg" /></h:inputSecret>
+						</div></td>
+						<td> <div class="validationbox3"><h:message id="passwordmsg" for="password" class="validation"/></div></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><div class="myButtonPadding"><h:commandButton id="logon" class="myButton" action="#{loginBean.login}"
+						value="Login">
+					</h:commandButton></div></td>
+			</tr>
+		</table>
+		<h:link value="Don't have an account? Register now!" outcome="register" />
+	</h:form></div>
+</h:body>
+</html>

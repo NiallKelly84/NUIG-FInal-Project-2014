@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<!-- Welcome page generated for Administrators -->
+<h:head>
+<title>Search</title>
+</h:head>
+<h:body>
+<h:outputStylesheet library="css" name="style.css"  />
+<div class="box"><h:button id="search" class="myButton3" outcome="search"
+						value="Search"/></div>
+<div class="box"><h:button id="register" class="myButton3" outcome="register"
+						value="Register"/></div>
+<div class="box"><h:button id="login" class="myButton3" outcome="login"
+						value="Login"/></div>
+<div class="centre"><h:graphicImage value="resources/images/logoImage.gif" width="200" height="170" /></div>
+	<div class="search"><h:form id="searchForm">
+		<div class="white"><H2>View All Contractors</H2></div>
+		<table>
+			<tr>
+				<td><div class="myButtonPadding"><h:commandButton id="searchContractors" class="myButton"
+				action="#{adminBean.searchAllContractors()}" value="View All">
+				<!-- ajax form generates the list of results from the search carried out above -->
+						 <f:ajax execute="@form" render=":results2" />
+					</h:commandButton></div></td>
+			</tr>
+			
+		</table>
+	</h:form></div>
+	
+	<div class="search2"><h:form id="results2">
+		<table>
+			<tr>
+			<td><div class="red"><H2>Search Results</H2></div>
+					
+					
+					<ui:repeat var="a" value="#{adminBean.contractorList}" varStatus="status">
+	    			
+	   			  <tr>
+		    			<td><div class="generaltext5">#{a.businessName}</div></td>
+		    		  
+		
+					
+					<td><h:commandButton id="deleteAccount" class="myButton2" value="Delete" type="button" >
+					
+    <f:ajax event="click" listener="#{adminBean.deleteAccount(a.id)}" execute="@form" render=":results2" />
+</h:commandButton> </td>
+		   
+	
+					
+		    			
+		    		  </tr>
+		    		  
+				</ui:repeat>
+				
+				</td>
+			</tr>
+		</table>
+		
+	</h:form></div>
+</h:body>
+</html>
+
+

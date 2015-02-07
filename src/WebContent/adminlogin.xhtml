@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+     
+     <!-- Login Form for administration -->
+<h:head>
+<title>Admin Login Page</title>
+</h:head>
+<h:body>
+<h:outputStylesheet library="css" name="style.css"  />
+<div class="box"><h:button id="search" class="myButton3" outcome="search"
+						value="Search"/></div>
+<div class="box"><h:button id="register" class="myButton3" outcome="register"
+						value="Register"/></div>
+<div class="box"><h:button id="login" class="myButton3" outcome="login"
+						value="Login"/></div>
+<div class="centre"><h:graphicImage value="resources/images/logoImage.gif" width="200" height="170" /></div>
+	<div class="login"><h:form id="LoginForm">
+		<div class="white"><h2>Administrator Login</h2></div>
+		<h:messages errorClass="errorMessage" infoClass="infoMessage"
+			warnClass="warnMessage"></h:messages>
+		<table>
+			<tr>
+				<td><h:outputLabel for="email">
+						<h:outputText class="generaltext" id="email" value="Email"/>
+					</h:outputLabel></td>
+				<td>
+				<div class="inputboxpadding"><h:inputText class="inputboxes" id="email2" value="#{adminBean.email}"
+						size="20" >
+                  </h:inputText></div></td>
+			</tr>
+			<tr>
+				<td><h:outputLabel for="password">
+						<h:outputText class="generaltext" id="passwordLabel" value="Password" />
+					</h:outputLabel></td>
+				<td><div class="inputboxpadding"><h:inputSecret id="password" class="inputboxes" value="#{adminBean.password}"
+						size="20" /></div></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><div class="myButtonPadding"><h:commandButton id="logon" class="myButton" action="#{adminBean.adminlogin()}"
+						value="Login">
+					</h:commandButton></div></td>
+			</tr>
+		</table>
+	</h:form></div>
+</h:body>
+</html>

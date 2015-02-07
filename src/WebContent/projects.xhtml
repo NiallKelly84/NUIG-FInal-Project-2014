@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:a4j="http://java.sun.com/jsf/core"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:p="http://richfaces.org/rich">
+      <!-- Form to add new project -->
+<h:head>
+<title>Welcome Page</title>
+</h:head>
+<h:body>
+<h:outputStylesheet library="css" name="style.css"  />
+	<div class="box"><h:button id="search" class="myButton3" outcome="search"
+						value="Search"/></div>
+<div class="box"><h:button id="register" class="myButton3" outcome="register"
+						value="Register"/></div>
+<div class="box"><h:button id="logout" class="myButton3" outcome="login"
+						value="Logout"/></div>
+<div class="centre"><h:graphicImage value="resources/images/logoImage.gif" width="200" height="170" /></div>
+<h:form id="projectsForm">
+		<div class="description"><table>
+			<tr>
+				<td><div class="white"><H2>Add Project</H2></div>
+				</td>
+			</tr>
+			<tr>
+			<td><h:outputLabel for="newProjectName">
+						<div style="width:200px"><h:outputText class="generaltext" id="newProjectLabel" value="Project Name" /></div>
+					</h:outputLabel></td>
+			<td><h:inputText class="inputboxes" id="projectName" value="#{projectBean.projects.projectName}"
+						size="30" required="true" requiredMessage="Required field" validatorMessage="Project Name must be between 10 and 30 characters">
+						<f:validateLength minimum="10" maximum="30"/>
+						<f:ajax event="blur" render="namemessage" /></h:inputText></td>
+						<td><div class="validationbox3"><h:message id="namemessage" for="projectName" class="validation"/></div></td>
+						</tr>
+						<tr>
+			<td><h:outputLabel for="newProjectDescription">
+						<h:outputText class="generaltext" id="newProjectDescriptionLabel" value="Description" />
+					</h:outputLabel></td>
+			<td><h:inputTextarea class="inputboxarea" id="projectDescription" value="#{projectBean.projects.projectDescription}"
+						size="20" required="true" requiredMessage="Required field"
+						validatorMessage="Project Description must be between 50 and 500 characters">
+						<f:validateLength minimum="50" maximum="500"/>
+						<f:ajax event="blur" render="descriptionmessage" /></h:inputTextarea>
+						</td>
+						<td> <div class="validationbox3"><h:message id="descriptionmessage" for="projectDescription" class="validation"/></div></td>
+						</tr>
+						<tr>
+				<td></td>
+				<td><div class="myButtonPadding2"><h:commandButton id="addProject"
+						action="#{projectBean.addProject()}" value="Add Project" class="myButton">
+					</h:commandButton></div></td>
+			</tr>
+
+		</table></div>
+	</h:form>
+	</h:body>
+	</html>

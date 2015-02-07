@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jstl/core">
+      <!-- Form to see description of project -->
+<h:head>
+<title>Project</title>
+</h:head>
+<h:body>
+<h:outputStylesheet library="css" name="style.css"  />
+<div class="box"><h:button id="search" class="myButton3" outcome="search"
+						value="Search"/></div>
+<div class="box"><h:button id="register" class="myButton3" outcome="register"
+						value="Register"/></div>
+<div class="box"><h:button id="logout2" class="myButton3" action="#{loginBean.logout}" outcome="login"
+						value="Logout"/></div>
+<div class="centre"><h:graphicImage value="resources/images/logoImage.gif" width="200" height="170" /></div>
+<div class="welcome"><h:form id="projectForm">
+		<div class="white"><H2>Past Projects</H2></div>
+		<table>
+			<tr>
+				<td>
+				<div class="companydetails">
+				 <h:outputFormat value="{0}"  class="boldfont">
+	 				<f:param value="#{projectBean.projectName}" />
+	 				</h:outputFormat><br/><br/>
+	 			<h:outputText value="Project Description" /><br/><br/>	
+	 			<h:outputFormat value="{0}">
+	 			<f:param value="#{projectBean.projectDescription}" />
+	 			</h:outputFormat></div>
+				</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><h:link value="Back" outcome="welcome" /></td>
+			</tr>
+		</table>
+	</h:form></div>
+	</h:body>
+	</html>
+

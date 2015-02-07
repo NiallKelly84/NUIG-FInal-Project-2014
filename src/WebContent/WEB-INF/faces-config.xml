@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config version="2.1" xmlns="http://java.sun.com/xml/ns/javaee"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_1.xsd">
+ 
+ <!-- Configured managed beans with annotations on managed beans class instead 
+		i.e. @ManagedBean, @ViewScoped 
+<managed-bean>
+ <managed-bean-name>locationsBean</managed-bean-name>
+ <managed-bean-class>com.needABuilder.managedBeans.LocationsBean</managed-bean-class>
+ <managed-bean-scope>request</managed-bean-scope>
+ </managed-bean>
+ <managed-bean> 
+ <managed-bean-name>loginBean</managed-bean-name> 
+ <managed-bean-class>com.needABuilder.managedBeans.LoginBean</managed-bean-class> 
+ <managed-bean-scope>request</managed-bean-scope> 
+ </managed-bean> 
+ <managed-bean> 
+ <managed-bean-name>registerBean</managed-bean-name> 
+ <managed-bean-class>com.needABuilder.managedBeans.RegisterBean</managed-bean-class> 
+ <managed-bean-scope>request</managed-bean-scope> 
+ </managed-bean>
+ <managed-bean> 
+ <managed-bean-name>ProjectBean</managed-bean-name> 
+ <managed-bean-class>com.needABuilder.managedBeans.ProjectBean</managed-bean-class> 
+ <managed-bean-scope>request</managed-bean-scope> 
+ </managed-bean>
+ <managed-bean>
+  <managed-bean-name>searchBean</managed-bean-name>
+  <managed-bean-class>com.needABuilder.managedBeans.SearchBean</managed-bean-class>
+  <managed-bean-scope>view</managed-bean-scope>
+ </managed-bean>
+  <managed-bean>
+  <managed-bean-name>commentBean</managed-bean-name>
+  <managed-bean-class>com.needABuilder.managedBeans.commentBean</managed-bean-class>
+  <managed-bean-scope>view</managed-bean-scope>
+ </managed-bean>-->
+ 
+ <!-- NAVIGATION RULES BETWEEN JSF PAGES FOR STRING VALUES RETURNED FROM MANAGED BEAN METHODS -->
+ <navigation-rule>
+  <display-name>login</display-name>
+  <from-view-id>/login.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>success</from-outcome>
+   <to-view-id>/welcome.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>failure</from-outcome>
+   <to-view-id>/login.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>systemError</from-outcome>
+   <to-view-id>/login.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ 
+ 
+ <navigation-rule>
+  <display-name>register</display-name>
+  <from-view-id>/register.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>success</from-outcome>
+   <to-view-id>/login.xhtml</to-view-id>
+  </navigation-case>
+   <navigation-case>
+   <from-outcome>register</from-outcome>
+   <to-view-id>/register.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ 
+ 
+
+ <navigation-rule>
+  <display-name>viewsearchresult</display-name>
+  <from-view-id>/viewsearchresult.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>success</from-outcome>
+   <to-view-id>/projectDescription.xhtml</to-view-id>
+  </navigation-case>
+  </navigation-rule>
+ 
+ 
+ <navigation-rule>
+  <display-name>welcome</display-name>
+  <from-view-id>/welcome.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>logout</from-outcome>
+   <to-view-id>/login.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>success</from-outcome>
+   <to-view-id>/projectDescription.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>delete</from-outcome>
+   <to-view-id>/welcome.xhtml</to-view-id>
+  </navigation-case>
+   <navigation-case>
+   <from-outcome>description</from-outcome>
+   <to-view-id>/companydescription.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>locations</from-outcome>
+   <to-view-id>/locations.xhtml</to-view-id>
+  </navigation-case>
+   <navigation-case>
+   <from-outcome>projects</from-outcome>
+   <to-view-id>/projects.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ 
+ <navigation-rule>
+  <display-name>companyDescription</display-name>
+  <from-view-id>/companydescription.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>success</from-outcome>
+   <to-view-id>/welcome.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>failure</from-outcome>
+   <to-view-id>/companydescription.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+
+ <navigation-rule>
+  <display-name>projects</display-name>
+  <from-view-id>/projects.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>success</from-outcome>
+   <to-view-id>/welcome.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+
+ <navigation-rule>
+  <display-name>locations</display-name>
+  <from-view-id>/locations.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>success</from-outcome>
+   <to-view-id>/welcome.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+
+  <navigation-rule>
+  <display-name>search</display-name>
+  <from-view-id>/search.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>success</from-outcome>
+   <to-view-id>/viewsearchresult.xhtml</to-view-id>
+  </navigation-case>
+  </navigation-rule>
+  
+   <navigation-rule>
+  <display-name>adminlogin</display-name>
+  <from-view-id>/adminlogin.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>success</from-outcome>
+   <to-view-id>/adminwelcome.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>failure</from-outcome>
+   <to-view-id>/adminlogin.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>systemError</from-outcome>
+   <to-view-id>/adminlogin.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ 
+  <navigation-rule>
+  <display-name>adminwelcome</display-name>
+  <from-view-id>/adminwelcome.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>delete</from-outcome>
+   <to-view-id>/adminwelcome.xhtml</to-view-id>
+  </navigation-case>
+  </navigation-rule>
+  
+  
+</faces-config>

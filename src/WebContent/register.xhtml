@@ -1,0 +1,142 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">	
+<h:head>
+<title>Register Business Account</title>
+</h:head>
+<h:body>
+<h:outputStylesheet library="css" name="style.css"  />
+	<div class="box"><h:button id="search" class="myButton3" outcome="search"
+						value="Search"/></div>
+<div class="box"><h:button id="register" class="myButton3" outcome="register"
+						value="Register"/></div>
+<div class="box"><h:button id="login" class="myButton3" outcome="login"
+						value="Login"/></div>
+<div class="centre"><h:graphicImage value="resources/images/logoImage.gif" width="200" height="170" /></div>
+	<div class="register"><h:form id="registerForm">
+		<div class="white"><h2>Add Business Account</h2></div>
+		<h:messages errorClass="errorMessage" infoClass="infoMessage"
+			warnClass="warnMessage"></h:messages>
+		<table>
+			<tr>
+				<td><h:outputLabel for="firstName">
+						<div style="width:200px"><h:outputText class="generaltext" id="firstNameLabel" value="First Name"/></div>
+					</h:outputLabel></td>
+				<td><div class="inputboxpadding"><h:inputText class="inputboxes" id="firstName"
+						value="#{registerBean.businessAccount.firstName}" size="20" required="true" 
+						requiredMessage="Required field" validatorMessage="First name must contain between 3 and 15 characters">
+						<f:validateLength minimum="3" maximum="15"/>
+						<f:ajax event="blur" render="fnamemessage" /></h:inputText>
+						</div></td>
+						<td> <div class="validationbox2"><h:message id="fnamemessage" for="firstName" class="validation"/></div></td>
+			</tr>
+			<tr>
+				<td><h:outputLabel for="surname">
+						<h:outputText class="generaltext" id="surnameLabel" value="Surname" />
+					</h:outputLabel></td>
+				<td><div class="inputboxpadding"><h:inputText class="inputboxes" id="surname"
+						value="#{registerBean.businessAccount.surname}" size="20" required="true"
+						requiredMessage="Required field" validatorMessage="Surname must contain between 3 and 15 characters">
+						<f:validateLength minimum="3" maximum="15"/>
+						<f:ajax event="blur" render="snamemessage" /></h:inputText></div></td>
+						<td> <div class="validationbox2"><h:message id="snamemessage" for="surname" class="validation"/></div></td>
+			</tr>
+			<tr>
+				<td><h:outputLabel for="businessName">
+						<h:outputText class="generaltext" id="businessNameLabel" value="Business Name" />
+					</h:outputLabel></td>
+				<td><div class="inputboxpadding"><h:inputText class="inputboxes" id="businessName"
+						value="#{registerBean.businessAccount.businessName}" size="20" required="true"
+						requiredMessage="Required field" validatorMessage="Business name must contain between 3 and 25 characters"> >
+				<f:validateLength minimum="3" maximum="25"/>
+						<f:ajax event="blur" render="bnamemessage" /></h:inputText></div></td>
+						<td> <div class="validationbox2"><h:message id="bnamemessage" for="businessName" class="validation"/></div></td>
+			</tr>
+			<tr>
+				<td><h:outputLabel for="telephoneNum">
+						<h:outputText class="generaltext" id="telephoneNumLabel" value="Telephone Num" />
+					</h:outputLabel></td>
+				<td><div class="inputboxpadding"><h:inputText class="inputboxes" id="telephoneNum"
+						value="#{registerBean.businessAccount.telephoneNum}" size="20" /></div></td>
+				<td><h:message for="telephoneNum"
+						styleClass="validation-error-msg insuarnce-validation" /></td>
+			</tr>
+			<tr>
+				<td><h:outputLabel for="address1">
+						<h:outputText class="generaltext" id="address1Label" value="Address 1" />
+					</h:outputLabel></td>
+				<td><div class="inputboxpadding"><h:inputText class="inputboxes" id="address1"
+						value="#{registerBean.businessAccount.address1}" size="20" required="true"
+				requiredMessage="Required field" validatorMessage="Address 1 must contain less than 15 characters"> >
+				<f:validateLength minimum="1" maximum="15"/>
+						<f:ajax event="blur" render="addressmsg"/></h:inputText></div></td>
+						<td> <div class="validationbox2"><h:message id="addressmsg" for="address1" class="validation"/></div></td>
+			</tr>
+			<tr>
+				<td><h:outputLabel for="address2">
+						<h:outputText class="generaltext" id="address2Label" value="Address 2" />
+					</h:outputLabel></td>
+				<td><div class="inputboxpadding"><h:inputText class="inputboxes" id="address2"
+						value="#{registerBean.businessAccount.address2}" size="20" /></div></td>
+			</tr>
+			<tr>
+				<td><h:outputLabel for="town">
+						<h:outputText class="generaltext" id="townLabel" value="Town" />
+					</h:outputLabel></td>
+				<td><div class="inputboxpadding"><h:inputText class="inputboxes" id="town"
+						value="#{registerBean.businessAccount.town}" size="20" required="true"
+				requiredMessage="Required field" validatorMessage="Town must contain between 3 and 15 characters"> >
+				<f:validateLength minimum="3" maximum="15"/>
+						<f:ajax event="blur" render="townmsg"/></h:inputText></div></td>
+						<td> <div class="validationbox2"><h:message id="townmsg" for="town" class="validation"/></div></td>
+			</tr>
+			<tr>
+				<td><h:outputLabel for="county">
+						<h:outputText class="generaltext" id="countyLabel" value="County" />
+					</h:outputLabel></td>
+				<td><div class="inputboxpadding"><h:selectOneMenu id="county" class="inputboxes"
+						value="#{registerBean.businessAccount.county.id}">
+						<f:selectItems value="#{registerBean.counties}" var="county"
+							itemLabel="#{county.name}" itemValue="#{county.id}" />
+					</h:selectOneMenu></div></td>
+				<td><h:message for="county"
+						styleClass="validation-error-msg insuarnce-validation" /></td>
+			</tr>
+			<tr>
+				<td><h:outputLabel for="email">
+						<h:outputText class="generaltext" id="emailLabel" value="Email" />
+					</h:outputLabel></td>
+				<td><div class="inputboxpadding"><h:inputText class="inputboxes" id="email"
+						value="#{registerBean.businessAccount.email}" size="20"
+						required="true" 
+						requiredMessage="Required field" validatorMessage="Invalid Email Address"> >
+				<f:validator validatorId="com.needABuilder.services.EmailValidator"/>
+						<f:ajax event="blur" render="emailmsg"/></h:inputText></div></td>
+						<td> <div class="validationbox2"><h:message id="emailmsg" for="email" class="validation"/></div></td>
+				
+			</tr>
+			<tr>
+				<td><h:outputLabel for="password">
+						<h:outputText class="generaltext" id="passwordLabel" value="Password" />
+					</h:outputLabel></td>
+				<td><div class="inputboxpadding"><h:inputSecret class="inputboxes" id="password"
+						value="#{registerBean.businessAccount.password}" size="20"
+						required="true" requiredMessage="Required field" validatorMessage="Password must be between 8 and 15 characters">
+				<f:validateLength minimum="8" maximum="15"/>
+						<f:ajax event="blur" render="passwordmsg"/></h:inputSecret></div></td>
+						<td> <div class="validationbox2"><h:message id="passwordmsg" for="password" class="validation"/></div></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><div class="myButtonPadding"><h:commandButton id="createAccounts" class="myButton"
+						action="#{registerBean.create(registerBean.businessAccount.email)}" value="Create Account">
+					</h:commandButton></div></td>
+			</tr>
+		</table>
+		<h:link value="Back to login" outcome="login" />
+	</h:form></div>
+</h:body>
+</html>

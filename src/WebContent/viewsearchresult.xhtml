@@ -1,0 +1,161 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jstl/core">
+<!-- Form that displays company details after search -->
+<h:head>
+<title>Profile</title>
+</h:head>
+<h:body>
+<h:outputStylesheet library="css" name="style.css"  />
+<div class="box"><h:button id="search" class="myButton3" outcome="search"
+						value="Search"/></div>
+<div class="box"><h:button id="register" class="myButton3" outcome="register"
+						value="Register"/></div>
+<div class="box"><h:button id="login" class="myButton3" outcome="login"
+						value="Login"/></div>
+<div class="centre"><h:graphicImage value="resources/images/logoImage.gif" width="200" height="170" /></div>
+<div class="welcome"><h:form id="resultsForm">
+		<div class="white"><H2>Company Profile</H2></div>
+		<table>
+			<tr>
+				<td>
+	 			<!-- Values displayed using parameters that were passed from previous jsf page -->
+	 			<div class="companydetails"><h:outputFormat value="{0}" class="companyname">
+	 				<f:param value="#{searchBean.companyName}"/>
+	 				</h:outputFormat><br/><br/>
+	 			
+	 			<h:outputFormat value="{0}">
+	 				<f:param value="#{searchBean.companyAddress1}" />
+	 				</h:outputFormat><br/>
+	 				
+	 			<h:outputFormat value="{0}">
+	 				<f:param value="#{searchBean.companyAddress2}" />
+	 				</h:outputFormat><br/>
+	 				
+	 			<h:outputFormat value="{0}">
+	 				<f:param value="#{searchBean.companyTown}" />
+	 				</h:outputFormat><br/>
+	 					
+	 			<h:outputFormat value="Co. {0}">
+	 				<f:param value="#{searchBean.companyCounty}" />
+	 				</h:outputFormat><br/><br/>
+	 				
+	 			<h:outputText value="Email: " class="boldfont" escape="false"/>	
+	 			
+	 			<h:outputFormat value="{0}">
+	 				<f:param value="#{searchBean.companyEmail}" />
+	 				</h:outputFormat><br/>
+	 				
+	 			<h:outputText value="Phone: " class="boldfont" escape="false"/>
+	 			<h:outputFormat value="{0}">
+	 				<f:param value="#{searchBean.companyPhone}" />
+	 				</h:outputFormat><br/>
+	 				</div>
+				</td>
+			</tr>
+
+		</table>
+		
+		<div class="white"><H2>Company Description</H2></div>
+			<table>
+			<tr>
+				<td>
+	 			
+	 			<div class="companydetails">
+	 			<h:outputFormat value="{0}">
+	 				<f:param value="#{searchBean.companyDescription}" />
+	 				</h:outputFormat><br/>
+	 				</div>
+				</td>
+			</tr>
+</table>
+<table>
+			
+			<tr>
+			
+			
+			<td><div class="white"><H2>Projects</H2></div>
+				<div class="tables2"><h:dataTable value="#{searchBean.projectList}" var="s" border="1">
+
+					<div class="td3"><h:column>
+					<div class="th3"><f:facet name="header">
+					<div class="generaltext3">Project Name</div>
+					</f:facet></div>
+					<div class="generaltext2">#{s.projectName}</div>
+					</h:column></div>
+					<div class="td2"><h:column>
+					<f:facet name="header">
+					<div class="generaltext3">Action</div>
+					</f:facet>
+					<div class="centrebutton2"><h:commandButton id="view" class="myButton2" value="view" action="#{projectBean.displayProjectDetails()}">
+							<f:param name="projId" value="#{s.project_id}" />
+							<f:param name="projName" value="#{s.projectName}" />
+							<f:param name="projDescription" value="#{s.projectDescription}" />
+					</h:commandButton></div>
+	              </h:column></div>
+	              
+				
+				
+				</h:dataTable></div>
+				
+				</td>
+			</tr>
+			
+			
+		</table>	
+		<table>
+			<tr>
+			<td><div class="white"><H2>Comments</H2></div>
+			
+			<h:inputText class="inputboxes" id="username"
+						value="#{commentBean.comment.commentname}" size="20">
+						</h:inputText><br/><br/>
+			<h:inputTextarea rows="5" cols="55" id="comment"  class="inputbox" value="#{commentBean.comment.commentText}"
+						size="20" /></td>
+					
+						</tr>
+						<tr>
+				<td></td>
+				
+				
+				<td><h:commandButton id="update"
+						action="#{commentBean.addComment(searchBean.companyId)}" class="myButton2" value="Add Comment" >
+					<f:ajax execute="@form" render=":results"/>
+				
+					
+					</h:commandButton></td>
+			</tr>
+		</table>
+	</h:form>
+	<h:form id="results">
+		<table>
+			<tr>
+			<td>
+				<h:dataTable value="#{commentBean.viewComments(searchBean.companyId)}" var="c">
+
+					<h:column>
+					<div class="commentsbox">#{c.commentText}</div>
+					</h:column>
+					<h:column>
+					<div class="boldfont">#{c.commentdate}</div>
+					</h:column>
+				
+			<td><h:column>
+					<div class="commentname">#{c.commentname}</div>
+					</h:column>
+			</td>
+			
+					</h:dataTable>
+					
+				</td>
+				</tr>
+	
+		</table>
+	</h:form></div>
+	</h:body>
+	</html>
+
+

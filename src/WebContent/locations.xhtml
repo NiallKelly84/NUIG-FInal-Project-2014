@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<!-- Form to add work locations -->
+<h:head>
+<title>Greeting Page</title>
+</h:head>
+<h:body>
+<h:outputStylesheet library="css" name="style.css"  />
+<div class="box"><h:button id="search" class="myButton3" outcome="search"
+						value="Search"/></div>
+<div class="box"><h:button id="register" class="myButton3" outcome="register"
+						value="Register"/></div>
+<div class="box"><h:button id="login" class="myButton3" outcome="login"
+						value="Login"/></div>
+<div class="centre"><h:graphicImage value="resources/images/logoImage.gif" width="200" height="170" /></div>
+	<div class="welcome"><h:form id="countyForm">
+		<div class="white"><H2>Work Counties</H2></div>
+		<div class="white1">Please select the counties that you are available to work in.</div>
+		<div class="red2">(Use the Control and Shift Buttons to select multiple locations)</div>
+		<table>
+
+			<tr>
+			<!-- Show list of all counties, user can select multiple -->
+				<td><h:selectManyListbox id="countyName"
+						class="inputbox2" value="#{locationsBean.countyList}">
+						<f:selectItems value="#{registerBean.counties}" var="county"
+							itemLabel="#{county.name}" itemValue="#{county.id}" />
+					</h:selectManyListbox></td>
+			</tr>
+			<tr>
+				<td><h:commandButton id="addLocations"
+						class="myButton2" action="#{locationsBean.addLocation(locationsBean.countyList)}"
+						value="Add Locations" >
+					</h:commandButton></td>
+			</tr>
+		</table>
+
+	</h:form></div>
+</h:body>
+</html>
